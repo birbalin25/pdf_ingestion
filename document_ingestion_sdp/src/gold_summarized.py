@@ -79,6 +79,7 @@ result_df = masked_df.select(
     "page_content_masked",
     "element_count",
     "element_types",
+    "image_uri",
 )
 
 # COMMAND ----------

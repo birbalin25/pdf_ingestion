@@ -85,6 +85,7 @@ def docs_silver_pages():
             ).alias("page_content"),
             F.count("*").alias("element_count"),
             F.collect_set("element_type").alias("element_types"),
+            F.first("image_uri").alias("image_uri"),
             F.max("extracted_at").alias("extracted_at"),
         )
         .withColumn("aggregated_at", F.current_timestamp())

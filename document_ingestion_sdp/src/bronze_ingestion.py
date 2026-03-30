@@ -59,6 +59,7 @@ def docs_bronze_elements():
             element.content::STRING AS content,
             element.description::STRING AS description,
             element.bbox[0].page_id::INT AS page_id,
+            from_json(to_json(parsed_doc:document:pages), 'ARRAY<STRUCT<id: INT, image_uri: STRING>>')[element.bbox[0].page_id::INT].image_uri AS image_uri,
             to_json(element.bbox) AS bbox_json,
             current_timestamp() AS extracted_at
         FROM STREAM(docs_bronze_parsed_docs_raw)

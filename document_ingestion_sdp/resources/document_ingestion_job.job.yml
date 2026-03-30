@@ -18,4 +18,4 @@ resources:
           depends_on:
             - task_key: gold_pii_masking
           notebook_task:
-            notebook_path: ../src/_jobs/create_vector_search_index.py
+            notebook_path: ../src/create_vector_search_index.py
