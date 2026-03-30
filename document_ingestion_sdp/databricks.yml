@@ -1,0 +1,20 @@
+bundle:
+  name: document_ingestion_sdp
+
+workspace:
+  host: https://adb-984752964297111.11.azuredatabricks.net
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    default: true
+    workspace:
+      host: https://adb-984752964297111.11.azuredatabricks.net
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/dev
+
+  prod:
+    workspace:
+      host: https://adb-984752964297111.11.azuredatabricks.net
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/prod

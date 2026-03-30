@@ -1,0 +1,21 @@
+resources:
+  jobs:
+    document_ingestion_job:
+      name: "document_ingestion_job"
+      tasks:
+        - task_key: refresh_pipeline
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.document_ingestion_pipeline.id}
+            full_refresh: false
+
+        - task_key: gold_pii_masking
+          depends_on:
+            - task_key: refresh_pipeline
+          notebook_task:
+            notebook_path: ../src/gold_summarized.py
+
+        - task_key: vector_search
+          depends_on:
+            - task_key: gold_pii_masking
+          notebook_task:
+            notebook_path: ../src/_jobs/create_vector_search_index.py

@@ -1,0 +1,16 @@
+resources:
+  pipelines:
+    document_ingestion_pipeline:
+      name: "document_ingestion_pipeline"
+      catalog: "bircatalog"
+      target: "pdf2"
+      libraries:
+        - file:
+            path: ../src/config.py
+        - notebook:
+            path: ../src/bronze_ingestion.py
+        - notebook:
+            path: ../src/silver_aggregated_pages.py
+      channel: "PREVIEW"
+      serverless: true
+      continuous: false
