@@ -73,7 +73,7 @@ def docs_silver_pages():
 
     # Aggregate elements by page, ordered by element_id
     aggregated_df = (
-        formatted_df.groupBy("file_name", "document_type", "page_id")
+        formatted_df.groupBy("file_name", "file_path", "document_type", "page_id")
         .agg(
             F.concat_ws(
                 "\n\n",

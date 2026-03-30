@@ -52,6 +52,7 @@ def docs_bronze_elements():
     return spark.sql("""
         SELECT
             file_name,
+            file_path,
             document_type,
             element.id::INT AS element_id,
             element.type::STRING AS element_type,

@@ -72,6 +72,7 @@ masked_df = base_df.withColumn(
 result_df = masked_df.select(
     "chunk_id",
     "file_name",
+    "file_path",
     "document_type",
     "page_id",
     "page_content",
